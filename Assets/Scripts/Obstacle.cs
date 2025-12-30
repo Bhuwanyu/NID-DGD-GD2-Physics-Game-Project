@@ -9,6 +9,7 @@ public class Obstacle : MonoBehaviour
     public float maxSpeed = 200f;
     public float minRotationSpeed = 10f;
     public float maxRotationSpeed = 200f;
+    public GameObject destroyBox; // Reference to the invisible destroy box
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,4 +29,15 @@ public class Obstacle : MonoBehaviour
     {
         
     }
+
+    //if the obstacle collides with the invisble box collider, destroy the obstacle
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject.CompareTag("Destroy"))
+        {
+        ScoreManager.scoreValue += 1;
+        Destroy(gameObject);
+        }
 }
+}
+

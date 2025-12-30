@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "ClawCatch.slnx"
+    "dotnet.defaultSolution": "NID-DGD-GD2-Physics-Game-Project.slnx"
 }
