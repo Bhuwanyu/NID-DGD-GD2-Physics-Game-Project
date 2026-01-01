@@ -38,6 +38,7 @@ public class ClawController : MonoBehaviour
      
     }
 
+    // Used for consistent physics updates
     void FixedUpdate()
     {
         MoveTopRod();
@@ -56,6 +57,7 @@ public class ClawController : MonoBehaviour
 
     void RotateLowerRodToMouse()
     {
+        //Screen to world point helps convert mouse position to game world coordinates
         Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mouseWorld - lowerRod.position;
         lowerRod.AddForce(direction * followStrength);
@@ -65,7 +67,7 @@ public class ClawController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
+            //Coroutine function to smoothly rotate claws
             if (rotateCoroutine != null) StopCoroutine(rotateCoroutine);
 
            if (clawActionAudio != null) 
@@ -91,6 +93,8 @@ public class ClawController : MonoBehaviour
         }
     }
 
+
+    //IEnumerator to smoothly rotate claws to target angle.
     IEnumerator RotateClaws(float targetZ)
     {
         float startZ = leftClaw.transform.localRotation.eulerAngles.z;
